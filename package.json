@@ -15,13 +15,15 @@
     "learning",
     "vocabulary"
   ],
-  "author": "G.C. Marty",
+  "author": "G.C. Marty <edo999@gmail.com>",
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/gmarty/learn-welsh/issues"
   },
-  "dependencies": {
+  "devDependencies": {
+    "fxos-build": "git://github.com/fxos/build#master",
     "nodexml": "~1.0.2",
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "gulp": "~3.8.10"
   }
 }

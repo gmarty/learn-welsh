@@ -87,7 +87,7 @@ for (i = 1; i <= UNIT_NUMBER; i++) {
   });
 }
 
-fs.writeFileSync(JSON_DIR + 'words.json', JSON.stringify(words, null, '  '));
+fs.writeFileSync(JSON_DIR + 'words.json', JSON.stringify(words, null, ''));
 
 // Transform a word into a token to ease string comparison.
 function tokenise(word) {

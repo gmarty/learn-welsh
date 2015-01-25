@@ -1,0 +1,32 @@
+{
+  "name": "shuffle-array",
+  "main": "dist/shuffle-array.js",
+  "homepage": "https://github.com/pazguille/shuffle-array",
+  "description": "Randomize the order of the elements in a given array.",
+  "keywords": [
+    "random",
+    "shuffle",
+    "array"
+  ],
+  "authors": [
+    "Guille Paz <guille87paz@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "f60fcbc10a",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f60fcbc10a9d71c9a8534607bddd28dacf65aa13"
+  },
+  "_source": "git://github.com/pazguille/shuffle-array.git",
+  "_target": "*",
+  "_originalSource": "shuffle-array",
+  "_direct": true
+}
