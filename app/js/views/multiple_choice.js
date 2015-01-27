@@ -1,28 +1,28 @@
 import { View } from 'components/fxos-mvc/dist/mvc';
 
 var template = `
-  <div id="quiz"></div>
+  <div class="main"></div>
   `;
 
 export default
-class HomeView extends View {
+class MultipleChoiceView extends View {
   constructor(options) {
-    console.log('HomeView#constructor()');
+    console.log('MultipleChoiceView#constructor()');
 
     super(options);
   }
 
   init(controller) {
-    console.log('HomeView#init()');
+    console.log('MultipleChoiceView#init()');
 
     super(controller);
     this.render();
 
-    this.quiz = this.$('#quiz');
+    this.main = this.$('.main');
   }
 
   render() {
-    console.log('HomeView#render()');
+    console.log('MultipleChoiceView#render()');
 
     super();
   }
@@ -36,7 +36,7 @@ class HomeView extends View {
   }
 
   renderQuiz(word, suggestions) {
-    this.quiz.innerHTML = '<p>' + word[0] + '</p>' +
+    this.main.innerHTML = '<p>' + word[0] + '</p>' +
     '<ul>' +
     '<li>' + suggestions.join('</li><li>') + '</li>' +
     '</ul>';

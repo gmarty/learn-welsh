@@ -1,6 +1,6 @@
 import { Controller } from 'components/fxos-mvc/dist/mvc';
 
-import HomeController from 'js/controllers/home';
+import MultipleChoiceController from 'js/controllers/multiple_choice';
 
 function displayError(error) {
   var message = (error.message || error.name || 'Unknown error');
@@ -19,7 +19,7 @@ class MainController extends Controller {
     console.log('MainController#init()');
 
     this.controllers = {
-      home: new HomeController()
+      multiple_choice: new MultipleChoiceController()
     };
   }
 
@@ -30,9 +30,9 @@ class MainController extends Controller {
 
     getWords
       .then(words => {
-        this.controllers.home.words = words;
+        this.controllers.multiple_choice.words = words;
 
-        this.setActiveController('home');
+        this.setActiveController('multiple_choice');
       })
       .catch(displayError);
   }

@@ -1,36 +1,36 @@
 import { Controller } from 'components/fxos-mvc/dist/mvc';
 
-import HomeView from 'js/views/home';
+import MultipleChoiceView from 'js/views/multiple_choice';
 
 import /*global shuffle*/ 'components/shuffle-array/index';
 
 export default
-class HomeController extends Controller {
+class MultipleChoiceController extends Controller {
   constructor(options) {
-    console.log('HomeController#constructor()');
+    console.log('MultipleChoiceController#constructor()');
 
-    this.view = new HomeView({
-      el: document.getElementById('home')
+    this.view = new MultipleChoiceView({
+      el: document.getElementById('multiple-choice')
     });
     super(options);
   }
 
   main() {
-    console.log('HomeController#main()');
+    console.log('MultipleChoiceController#main()');
 
     this.view.setActive(true);
 
     // Start a quiz.
-    this.quiz(3);
+    this.exercise(3);
   }
 
   teardown() {
-    console.log('HomeController#teardown()');
+    console.log('MultipleChoiceController#teardown()');
 
     this.view.setActive(false);
   }
 
-  quiz(level) {
+  exercise(level) {
     var word = this.pickAWord(level);
     var suggestions = [
       word[1],
