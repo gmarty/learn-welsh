@@ -18,6 +18,10 @@ class MultipleChoiceController extends Controller {
   main() {
     console.log('MultipleChoiceController#main()');
 
+    if (!this.words) {
+      throw(new Error('The list of words is required.'));
+    }
+
     this.view.setActive(true);
 
     // Start a quiz.
