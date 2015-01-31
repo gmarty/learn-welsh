@@ -1,10 +1,8 @@
 import { View } from 'components/fxos-mvc/dist/mvc';
 
 var template = `
-  <div class="main">
-    <p class="question"></p>
-    <ul class="choices"></ul>
-  </div>
+  <p><input type="button" value="♫" class="play" disabled/><span class="question"></span></p>
+  <ul class="choices clickable"></ul>
   `;
 
 export default
@@ -21,9 +19,16 @@ class MultipleChoiceView extends View {
     super(controller);
     this.render();
 
-    this.main = this.$('.main');
+    this.play = this.$('.play');
     this.question = this.$('.question');
     this.choices = this.$('.choices');
+    this.mp3 = null;
+
+    this.on('click', '#multiple-choice .play', () => {
+      if (this.mp3) {
+        this.mp3.play();
+      }
+    });
   }
 
   render() {
@@ -46,8 +51,16 @@ class MultipleChoiceView extends View {
         choice => this.renderChoice(choice)
     ).join('');
 
+    this.mp3 = new Audio();
+    this.mp3.src = `assets/mp3/${word[2]}`;
+    // @todo Listen to the loaded event before enabling the playback button.
+    this.play.removeAttribute('disabled');
+
     var clickHandler = (evt) => {
       this.off('click', '#multiple-choice .choices li', clickHandler);
+      this.choices.classList.remove('clickable');
+      this.play.setAttribute('disabled', true);
+      this.mp3 = null;
 
       var response = evt.target.innerHTML;
       if (response === word[1]) {

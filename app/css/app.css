@@ -6,6 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font: normal 2.4rem/4.8rem Arial;
+  overflow: hidden;
 }
 
 body > section {
@@ -22,4 +23,53 @@ body > section {
 body > section.active {
   pointer-events: auto;
   opacity: 1;
+}
+
+/* Multiple choice */
+#multiple-choice {
+  text-align: center;
+}
+
+#multiple-choice p {
+  margin-right: 6rem; /* To center back the question */
+}
+
+.play {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 2rem 0 0;
+  border-radius: 100%;
+  border: none;
+  background: lightskyblue;
+  color: white;
+  vertical-align: text-bottom;
+  cursor: pointer;
+  font-size: 2.5rem;
+}
+
+.question {
+  font-size: 200%;
+}
+
+.choices {
+  margin: 0;
+  padding: 0;
+}
+
+.choices li {
+  list-style: none;
+  background: lightskyblue;
+  color: darkslategrey;
+  margin: 1rem 10%;
+}
+
+.choices.clickable li {
+  cursor: pointer;
+}
+
+.choices li:after {
+  content: "▶";
+  color: white;
+  right: 11%;
+  position: absolute;
 }
