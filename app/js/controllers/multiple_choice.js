@@ -12,6 +12,7 @@ class MultipleChoiceController extends Controller {
     this.view = new MultipleChoiceView({
       el: document.getElementById('multiple-choice')
     });
+    this.word = null;
     super(options);
   }
 
@@ -35,16 +36,26 @@ class MultipleChoiceController extends Controller {
   }
 
   exercise(level) {
-    var word = this.pickAWord(level);
+    this.word = this.pickAWord(level);
+
     var suggestions = [
-      word[1],
+      this.word[1],
       this.pickAWord(level)[1],
       this.pickAWord(level)[1]
     ];
 
     shuffle(suggestions);
 
-    this.view.renderQuiz(word, suggestions);
+    this.view.renderQuiz(this.word, suggestions);
+  }
+
+  answer(choice) {
+    if (choice === this.word[1]) {
+      this.score.incrementScore('correct');
+      return;
+    }
+
+    this.score.incrementScore('incorrect');
   }
 
   pickAWord(level) {

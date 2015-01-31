@@ -62,13 +62,8 @@ class MultipleChoiceView extends View {
       this.play.setAttribute('disabled', true);
       this.mp3 = null;
 
-      var response = evt.target.innerHTML;
-      if (response === word[1]) {
-        this.controller.score.incrementScore('correct');
-        return;
-      }
-
-      this.controller.score.incrementScore('incorrect');
+      var choice = evt.target.innerHTML;
+      this.controller.answer(choice);
     };
 
     this.on('click', '#multiple-choice .choices li', clickHandler);
