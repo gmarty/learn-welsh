@@ -2,6 +2,8 @@ import { Controller } from 'components/fxos-mvc/dist/mvc';
 
 import MultipleChoiceController from 'js/controllers/multiple_choice';
 
+import Score from 'js/models/score';
+
 function displayError(error) {
   var message = (error.message || error.name || 'Unknown error');
   console.error(message);
@@ -12,6 +14,8 @@ class MainController extends Controller {
   constructor() {
     console.log('MainController#constructor()');
 
+    this.score = new Score();
+
     this.init();
   }
 
@@ -19,7 +23,7 @@ class MainController extends Controller {
     console.log('MainController#init()');
 
     this.controllers = {
-      multiple_choice: new MultipleChoiceController()
+      multiple_choice: new MultipleChoiceController({score: this.score})
     };
   }
 

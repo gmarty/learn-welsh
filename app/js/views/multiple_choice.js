@@ -1,7 +1,10 @@
 import { View } from 'components/fxos-mvc/dist/mvc';
 
 var template = `
-  <div class="main"></div>
+  <div class="main">
+    <p class="question"></p>
+    <ul class="choices"></ul>
+  </div>
   `;
 
 export default
@@ -19,6 +22,8 @@ class MultipleChoiceView extends View {
     this.render();
 
     this.main = this.$('.main');
+    this.question = this.$('.question');
+    this.choices = this.$('.choices');
   }
 
   render() {
@@ -36,9 +41,27 @@ class MultipleChoiceView extends View {
   }
 
   renderQuiz(word, suggestions) {
-    this.main.innerHTML = '<p>' + word[0] + '</p>' +
-    '<ul>' +
-    '<li>' + suggestions.join('</li><li>') + '</li>' +
-    '</ul>';
+    this.question.textContent = word[0];
+    this.choices.innerHTML = suggestions.map(
+        choice => this.renderChoice(choice)
+    ).join('');
+
+    var clickHandler = (evt) => {
+      this.off('click', '#multiple-choice .choices li', clickHandler);
+
+      var response = evt.target.innerHTML;
+      if (response === word[1]) {
+        this.controller.score.incrementScore('correct');
+        return;
+      }
+
+      this.controller.score.incrementScore('incorrect');
+    };
+
+    this.on('click', '#multiple-choice .choices li', clickHandler);
+  }
+
+  renderChoice(word) {
+    return `<li>${word}</li>`;
   }
 }
