@@ -25,6 +25,12 @@ body > section.active {
   opacity: 1;
 }
 
+h1 {
+  font-size: 3.6rem;
+  font-weight: normal;
+  text-align: center;
+}
+
 /* Multiple choice */
 #multiple-choice {
   text-align: center;
@@ -45,10 +51,6 @@ body > section.active {
   vertical-align: text-bottom;
   cursor: pointer;
   font-size: 2.5rem;
-}
-
-.question {
-  font-size: 200%;
 }
 
 .choices {

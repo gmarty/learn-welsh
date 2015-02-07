@@ -1,7 +1,7 @@
 import { View } from 'components/fxos-mvc/dist/mvc';
 
 var template = `
-  <p><input type="button" value="♫" class="play" disabled/><span class="question"></span></p>
+  <h1><input type="button" value="♫" class="play" disabled/><span class="question"></span></h1>
   <ul class="choices clickable"></ul>
   `;
 
