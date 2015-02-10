@@ -1,4 +1,4 @@
-# Learn Welsh (South Wales version)
+# ![Learn Welsh (South Wales version)](https://raw.githubusercontent.com/gmarty/learn-welsh/master/app/img/icons/32.png "Learn Welsh (South Wales version)") Learn Welsh (South Wales version)
 
 > App to learn common phrases and words in Welsh.
 
