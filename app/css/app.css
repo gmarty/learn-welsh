@@ -31,6 +31,30 @@ h1 {
   text-align: center;
 }
 
+/* Message */
+.correct:before {
+  content: "✓ ";
+  color: forestgreen;
+}
+
+.incorrect:before {
+  content: "✗ ";
+  color: red;
+}
+
+#message p {
+  margin: 1rem 10%;
+}
+
+#message input[type="button"] {
+  background: lightskyblue;
+  color: darkslategrey;
+  border: none;
+  padding: 1rem;
+  font-size: 2.4rem;
+  width: 100%;
+}
+
 /* Multiple choice */
 #multiple-choice {
   text-align: center;

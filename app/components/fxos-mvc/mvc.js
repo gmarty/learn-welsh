@@ -68,10 +68,38 @@ export class View {
 	}
 
 	/**
+	 * Renders the layout wrapper for the template.
+	 *
+	 * @param {Template} Inner template
+	 * @return {String} Rendered layout with template
+	 */
+	layout(template) {
+		return template;
+	}
+
+	/**
 	 * Render the default template.
 	 */
-	render() {
-		this.el.innerHTML = this.template();
+	render(params) {
+		var innerHTML = '';
+
+		if (params) {
+			if (typeof params === 'object') {
+				for (var index in params) {
+					var param = params[index];
+					innerHTML += this.template(param);
+				}
+			} else {
+				for (let i = 0; i < params.length; i++) {
+					var param = params[i];
+					innerHTML += this.template(param);
+				}
+			}
+		} else {
+			innerHTML = this.template();
+		}
+
+		this.el.innerHTML = this.layout(innerHTML);
 	}
 
 	/**
@@ -131,7 +159,7 @@ export class View {
 		events[type] = events[type].filter((delegate) => {
 			if (typeof handler === 'function') {
 				return delegate.selector !== selector ||
-							 delegate.handler  !== handler;
+					delegate.handler  !== handler;
 			}
 
 			return delegate.selector !== selector;
@@ -165,5 +193,90 @@ export class Controller {
 		if (this.view && typeof this.view.init === 'function') {
 			this.view.init(this);
 		}
+	}
+
+	teardown() {
+
+	}
+
+	main() {
+
+	}
+}
+
+export class RoutingController extends Controller {
+	constructor(controllers) {
+		super();
+		this.controllers = controllers;
+		this.activeController = null;
+		window.addEventListener('hashchange', this.route.bind(this));
+	}
+
+	route() {
+		var route = window.location.hash.slice(1);
+		var controller = this.controllers[route];
+		if (controller) {
+			if (this.activeController) {
+				this.activeController.teardown();
+			}
+
+			this.activeController = controller;
+			controller.main();
+		}
+	}
+}
+
+/**
+ * Service
+ */
+export class Service {
+	constructor() {
+		this._listeners = {};
+		this._dispatchedEvents = {};
+	}
+
+	addEventListener(name, callback, trigger) {
+		if (!this._listeners[name]) {
+			this._listeners[name] = [callback];
+		} else {
+			this._listeners[name].push(callback);
+		}
+
+		if (trigger && this._dispatchedEvents[name] !== undefined) {
+			setTimeout(() => {
+				callback(this._dispatchedEvents[name]);
+			});
+		}
+	}
+
+	removeEventListener(name, callback) {
+		if (!this._listeners[name]) {
+			return;
+		}
+
+		var listenerIndex;
+		this._listeners[name].find((listener, index) => {
+			if (listener === callback) {
+				listenerIndex = index;
+			}
+
+			return listenerIndex !== undefined;
+		});
+
+		if (listenerIndex !== undefined) {
+			this._listeners[name].splice(listenerIndex, 1);
+		}
+	}
+
+	_dispatchEvent(name, params) {
+		if (!this._listeners[name]) {
+			return;
+		}
+
+		this._dispatchedEvents[name] = params || null;
+
+		this._listeners[name].forEach((listener) => {
+			listener(params);
+		});
 	}
 }

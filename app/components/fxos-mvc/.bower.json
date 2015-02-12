@@ -1,6 +1,6 @@
 {
   "name": "fxos-mvc",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "homepage": "https://github.com/fxos/mvc",
   "license": "MPL",
   "main": "mvc.js",
@@ -12,11 +12,11 @@
     "README.md",
     "test"
   ],
-  "_release": "0.0.3",
+  "_release": "0.0.4",
   "_resolution": {
     "type": "version",
-    "tag": "v0.0.3",
-    "commit": "3378f9e654500cb70245a5d455cd79110a956300"
+    "tag": "v0.0.4",
+    "commit": "6560eccf27ee1c71a8dc94a415a594a4563b1854"
   },
   "_source": "git@github.com:fxos/mvc.git",
   "_target": "*",

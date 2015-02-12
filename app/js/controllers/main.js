@@ -1,6 +1,9 @@
 import { Controller } from 'components/fxos-mvc/dist/mvc';
 
+import { Service } from 'components/fxos-mvc/dist/mvc';
+
 import MultipleChoiceController from 'js/controllers/multiple_choice';
+import MessageController from 'js/controllers/message';
 
 import Score from 'js/models/score';
 
@@ -14,6 +17,7 @@ class MainController extends Controller {
   constructor() {
     console.log('MainController#constructor()');
 
+    this.service = new Service();
     this.score = new Score();
 
     this.init();
@@ -22,9 +26,29 @@ class MainController extends Controller {
   init() {
     console.log('MainController#init()');
 
-    this.controllers = {
-      multiple_choice: new MultipleChoiceController({score: this.score})
+    var options = {
+      service: this.service,
+      score: this.score
     };
+
+    this.controllers = {
+      multiple_choice: new MultipleChoiceController(options),
+      message: new MessageController(options)
+    };
+
+    this.service.addEventListener('answerdismissed', () => {
+      this.doExercise();
+    });
+
+    // Observe the score and update the view accordingly.
+    this.score.on('correct', () => {
+      this.controllers.message.view.render('correct');
+      this.setActiveController('message');
+    });
+    this.score.on('incorrect', () => {
+      this.controllers.message.view.render('incorrect');
+      this.setActiveController('message');
+    });
   }
 
   main() {
@@ -36,7 +60,7 @@ class MainController extends Controller {
       .then(words => {
         this.controllers.multiple_choice.words = words;
 
-        this.setActiveController('multiple_choice');
+        this.doExercise();
       })
       .catch(displayError);
   }
@@ -52,6 +76,10 @@ class MainController extends Controller {
 
     this.activeController = this.controllers[controllerName];
     this.activeController.main();
+  }
+
+  doExercise() {
+    this.setActiveController('multiple_choice');
   }
 
   /**
