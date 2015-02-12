@@ -1,11 +1,11 @@
 {
   "name": "learn-welsh",
   "version": "0.0.0",
-  "homepage": "https://github.com/gmarty/learn-welsh",
+  "description": "App to learn common phrases and words in Welsh.",
   "authors": [
     "G.C. Marty <edo999@gmail.com>"
   ],
-  "description": "Learn Welsh vocabulary with ease.",
+  "homepage": "https://github.com/gmarty/learn-welsh",
   "keywords": [
     "Welsh",
     "Cymraeg",
