@@ -26,7 +26,7 @@ class MultipleChoiceController extends Controller {
     this.view.setActive(true);
 
     // Start a quiz.
-    this.exercise(3);
+    this.exercise(this.score.level);
   }
 
   teardown() {
@@ -35,7 +35,7 @@ class MultipleChoiceController extends Controller {
     this.view.setActive(false);
   }
 
-  exercise(level) {
+  exercise(level = 0) {
     this.word = this.pickAWord(level);
 
     var suggestions = [

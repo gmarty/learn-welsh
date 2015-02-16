@@ -10,6 +10,12 @@ var incorrectTemplate = `
   <p><input type="button" value="Continue"></p>
   `;
 
+var nextLevelTemplate = `
+  <h1 class="next-level">Congratulations!!</h1>
+  <p>You've progressed to a new level!</p>
+  <p><input type="button" value="Continue"></p>
+  `;
+
 export default
 class MessageView extends View {
   constructor(options) {
@@ -31,12 +37,19 @@ class MessageView extends View {
   render(type = 'correct') {
     console.log('MessageView#render()');
 
-    if (type === 'correct') {
-      this.el.innerHTML = correctTemplate;
-      return;
+    switch (type) {
+      case 'correct':
+        this.el.innerHTML = correctTemplate;
+        return;
+      case 'incorrect':
+        this.el.innerHTML = incorrectTemplate;
+        return;
+      case 'next-level':
+        this.el.innerHTML = nextLevelTemplate;
+        return;
+      default:
+        throw(new Error('Unknown view requested: ' + type + '.'));
     }
-
-    this.el.innerHTML = incorrectTemplate;
   }
 
   setActive(active) {

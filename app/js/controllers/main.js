@@ -42,6 +42,15 @@ class MainController extends Controller {
 
     // Observe the score and update the view accordingly.
     this.score.on('correct', () => {
+      if (this.score.percentage >= 60 &&
+        this.score.totalAnswers >= this.score.answersBeforeNextLevel) {
+        // Next level when at least 20 exercises per level were completed with 60% success.
+        this.score.level++;
+        this.controllers.message.view.render('next-level');
+        this.setActiveController('message');
+        return;
+      }
+
       this.controllers.message.view.render('correct');
       this.setActiveController('message');
     });
@@ -58,6 +67,7 @@ class MainController extends Controller {
 
     getWords
       .then(words => {
+        this.score.maxLevel = words.length;
         this.controllers.multiple_choice.words = words;
 
         this.doExercise();
