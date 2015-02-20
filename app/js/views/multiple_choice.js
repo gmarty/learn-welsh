@@ -1,7 +1,7 @@
 import { View } from 'components/fxos-mvc/dist/mvc';
 
 var template = `
-  <h1><input type="button" value="♫" class="play" disabled/><span class="question"></span></h1>
+  <h1><input type="button" value="♫" class="play" disabled hidden/><span class="question"></span></h1>
   <ul class="choices clickable"></ul>
   `;
 
@@ -14,8 +14,6 @@ class MultipleChoiceView extends View {
   }
 
   init(controller) {
-    console.log('MultipleChoiceView#init()');
-
     super(controller);
     this.render();
 
@@ -24,17 +22,24 @@ class MultipleChoiceView extends View {
     this.choices = this.$('.choices');
     this.mp3 = null;
 
-    this.on('click', '#multiple-choice .play', () => {
-      if (this.mp3) {
-        this.mp3.play();
-      }
+    if (this.controller.showAudioIcon) {
+      this.on('click', '#' + this.controller.id + ' input.play', () => {
+        if (this.mp3) {
+          this.mp3.play();
+        }
+      });
+      this.play.removeAttribute('hidden');
+    }
+
+    this.on('click', '#' + this.controller.id + ' ul.choices li', evt => {
+      console.log('Click handler');
+      //this.choices.classList.remove('clickable');
+      //this.play.setAttribute('disabled', true);
+      this.mp3 = null;
+
+      var choice = evt.target.innerHTML;
+      this.controller.answer(choice);
     });
-  }
-
-  render() {
-    console.log('MultipleChoiceView#render()');
-
-    super();
   }
 
   template() {
@@ -46,27 +51,17 @@ class MultipleChoiceView extends View {
   }
 
   renderQuiz(word, suggestions) {
-    this.question.textContent = word[0];
-    this.choices.innerHTML = suggestions.map(
-        choice => this.renderChoice(choice)
-    ).join('');
+    this.question.textContent = word[this.controller.questionIndex];
+    this.choices.innerHTML = suggestions
+      .map(choice => this.renderChoice(choice))
+      .join('');
 
-    this.mp3 = new Audio();
-    this.mp3.src = `assets/mp3/${word[2]}`;
-    // @todo Listen to the loaded event before enabling the playback button.
-    this.play.removeAttribute('disabled');
-
-    var clickHandler = (evt) => {
-      this.off('click', '#multiple-choice .choices li', clickHandler);
-      this.choices.classList.remove('clickable');
-      this.play.setAttribute('disabled', true);
-      this.mp3 = null;
-
-      var choice = evt.target.innerHTML;
-      this.controller.answer(choice);
-    };
-
-    this.on('click', '#multiple-choice .choices li', clickHandler);
+    if (this.controller.showAudioIcon) {
+      this.mp3 = new Audio();
+      this.mp3.src = `assets/mp3/${word[2]}`;
+      // @todo Listen to the loaded event before enabling the playback button.
+      this.play.removeAttribute('disabled');
+    }
   }
 
   renderChoice(word) {

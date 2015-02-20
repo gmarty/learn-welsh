@@ -5,20 +5,32 @@ import MultipleChoiceView from 'js/views/multiple_choice';
 import /*global shuffle*/ 'components/shuffle-array/index';
 
 export default
-class MultipleChoiceController extends Controller {
+class MultipleChoiceControllerEn extends Controller {
   constructor(options) {
-    console.log('MultipleChoiceController#constructor()');
+    console.log('MultipleChoiceControllerEn#constructor()');
+
+    var defaultOptions = {
+      id: 'multiple-choice-en',
+      showAudioIcon: true,
+      questionIndex: 0,
+      choicesIndex: 1,
+      words: [],
+      word: null
+    };
+
+    for (var option in defaultOptions) {
+      if (options[option] === undefined) {
+        options[option] = defaultOptions[option];
+      }
+    }
 
     this.view = new MultipleChoiceView({
-      el: document.getElementById('multiple-choice')
+      el: document.getElementById(options.id)
     });
-    this.word = null;
     super(options);
   }
 
   main() {
-    console.log('MultipleChoiceController#main()');
-
     if (!this.words) {
       throw(new Error('The list of words is required.'));
     }
@@ -30,8 +42,6 @@ class MultipleChoiceController extends Controller {
   }
 
   teardown() {
-    console.log('MultipleChoiceController#teardown()');
-
     this.view.setActive(false);
   }
 
@@ -39,9 +49,9 @@ class MultipleChoiceController extends Controller {
     this.word = this.pickAWord(level);
 
     var suggestions = [
-      this.word[1],
-      this.pickAWord(level)[1],
-      this.pickAWord(level)[1]
+      this.word[this.choicesIndex],
+      this.pickAWord(level)[this.choicesIndex],
+      this.pickAWord(level)[this.choicesIndex]
     ];
 
     shuffle(suggestions);
@@ -50,7 +60,7 @@ class MultipleChoiceController extends Controller {
   }
 
   answer(choice) {
-    if (choice === this.word[1]) {
+    if (choice === this.word[this.choicesIndex]) {
       this.score.incrementScore('correct');
       return;
     }

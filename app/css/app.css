@@ -9,6 +9,10 @@ body {
   overflow: hidden;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 body > section {
   position: absolute;
   top: 0;
@@ -18,6 +22,7 @@ body > section {
   pointer-events: none;
   opacity: 0;
   transition: opacity 150ms;
+  -moz-user-select: none; /* To avoid cheaters copying/pasting text! */
 }
 
 body > section.active {
@@ -50,6 +55,7 @@ h1 {
   background: lightskyblue;
   color: darkslategrey;
   border: none;
+  border-radius: 0;
   padding: 1rem;
   font-size: 2.4rem;
   width: 100%;
@@ -91,11 +97,4 @@ h1 {
 
 .choices.clickable li {
   cursor: pointer;
-}
-
-.choices li:after {
-  content: "▶";
-  color: white;
-  right: 11%;
-  position: absolute;
 }
