@@ -4,13 +4,13 @@
 
 ## Content
 
-The source code is located in the `/app` folder.
+The source code is located in the `/app` folder. To build it, do:
 
-To build it, use:
 ```javascript
-gulp build
+$ gulp build
 ```
-Then point your browser to the `/dist` folder.
+
+Then point your browser to `http://localhost:8000`.
 
 This repo also contains all the scripts to download and process the assets from
 the online course section of the BBC website [The Big Welsh Challenge]
