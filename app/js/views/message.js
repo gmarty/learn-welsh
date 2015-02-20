@@ -29,7 +29,7 @@ class MessageView extends View {
 
     super(controller);
 
-    this.on('click', 'input[type="button"]', () => {
+    this.on('click', '#message input[type="button"]', () => {
       this.service._dispatchEvent('answerdismissed');
     });
   }
