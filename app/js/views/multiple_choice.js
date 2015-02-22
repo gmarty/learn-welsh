@@ -5,6 +5,10 @@ var template = `
   <ul class="choices clickable"></ul>
   `;
 
+var renderChoice = word => `
+  <li>${word}</li>
+  `;
+
 export default
 class MultipleChoiceView extends View {
   constructor(options) {
@@ -32,7 +36,6 @@ class MultipleChoiceView extends View {
     }
 
     this.on('click', '#' + this.controller.id + ' ul.choices li', evt => {
-      console.log('Click handler');
       //this.choices.classList.remove('clickable');
       //this.play.setAttribute('disabled', true);
       this.mp3 = null;
@@ -51,9 +54,13 @@ class MultipleChoiceView extends View {
   }
 
   renderQuiz(word, suggestions) {
-    this.question.textContent = word[this.controller.questionIndex];
+    var question = word[this.controller.questionIndex];
+    var finalPunctuation = this.getFinalPunctuation(question);
+
+    this.question.textContent = question;
     this.choices.innerHTML = suggestions
-      .map(choice => this.renderChoice(choice))
+      .map(choice => this.replaceFinalPunctuation(choice, finalPunctuation))
+      .map(choice => renderChoice(choice))
       .join('');
 
     if (this.controller.showAudioIcon) {
@@ -64,7 +71,24 @@ class MultipleChoiceView extends View {
     }
   }
 
-  renderChoice(word) {
-    return `<li>${word}</li>`;
+  /**
+   * To avoid users cheating using the punctuation to infer the right answer,
+   * we change the final punctuation in the choices to match that of the word.
+   *
+   * @param {string} word
+   * @returns {string}
+   */
+  getFinalPunctuation(word) {
+    var matches = word.match(/[\.?!]+$/);
+    return matches ? matches[0] : '';
+  }
+
+  /**
+   * @param {string} word
+   * @param {string} finalPunctuation
+   * @returns {string}
+   */
+  replaceFinalPunctuation(word, finalPunctuation) {
+    return word.replace(/[\.?!]+$/, '') + finalPunctuation;
   }
 }
