@@ -30,7 +30,7 @@ for (var i = 1; i <= UNIT_NUMBER; i++) {
 // Dedupe words from each unit.
 for (i = 1; i <= UNIT_NUMBER; i++) {
   words[i - 1] = _.uniq(words[i - 1], function(word) {
-    return tokenise(word.cy) + ' ' + tokenise(word.en);
+    return tokenise(word.cy);
   });
 }
 
@@ -44,7 +44,7 @@ for (i = 1; i <= UNIT_NUMBER; i++) {
       continue;
     }
 
-    var token1 = tokenise(word.cy) + ' ' + tokenise(word.en);
+    var token1 = tokenise(word.cy);
 
     // Compare with all other units.
     for (var k = 1; k <= UNIT_NUMBER; k++) {
@@ -59,7 +59,7 @@ for (i = 1; i <= UNIT_NUMBER; i++) {
           continue;
         }
 
-        var token2 = tokenise(word.cy) + ' ' + tokenise(word.en);
+        var token2 = tokenise(word.cy);
 
         // If the word already exists, we remove it.
         if (token1 === token2) {
