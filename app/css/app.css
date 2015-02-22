@@ -51,14 +51,17 @@ h1 {
   margin: 1rem 10%;
 }
 
-#message input[type="button"] {
+#message input[type="button"],
+.play,
+.choices li button {
+  width: 100%;
+  padding: 1rem;
   background: lightskyblue;
   color: darkslategrey;
   border: none;
   border-radius: 0;
-  padding: 1rem;
   font-size: 2.4rem;
-  width: 100%;
+  cursor: pointer;
 }
 
 /* Multiple choice */
@@ -74,13 +77,16 @@ h1 {
   width: 4rem;
   height: 4rem;
   margin: 0 2rem 0 0;
+  padding: 0;
   border-radius: 100%;
-  border: none;
-  background: lightskyblue;
   color: white;
   vertical-align: text-bottom;
-  cursor: pointer;
-  font-size: 2.5rem;
+  transition: background 300ms;
+}
+
+.play[disabled] {
+  background: lightgrey;
+  cursor: auto;
 }
 
 .choices {
@@ -90,11 +96,14 @@ h1 {
 
 .choices li {
   list-style: none;
-  background: lightskyblue;
-  color: darkslategrey;
   margin: 1rem 10%;
+  pointer-events: none;
 }
 
 .choices.clickable li {
-  cursor: pointer;
+  pointer-events: auto;
+}
+
+.choices li button {
+  text-align: left;
 }

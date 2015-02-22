@@ -2,11 +2,11 @@ import { View } from 'components/fxos-mvc/dist/mvc';
 
 var template = `
   <h1><input type="button" value="♫" class="play" disabled hidden/><span class="question"></span></h1>
-  <ul class="choices clickable"></ul>
+  <ul class="choices"></ul>
   `;
 
 var renderChoice = word => `
-  <li>${word}</li>
+  <li><button>${word}</button></li>
   `;
 
 export default
@@ -35,14 +35,15 @@ class MultipleChoiceView extends View {
       this.play.removeAttribute('hidden');
     }
 
-    this.on('click', '#' + this.controller.id + ' ul.choices li', evt => {
-      //this.choices.classList.remove('clickable');
-      //this.play.setAttribute('disabled', true);
-      this.mp3 = null;
+    this.on('click', '#' + this.controller.id + ' ul.choices li button',
+        evt => {
+        this.choices.classList.remove('clickable');
+        this.play.setAttribute('disabled', true);
+        this.mp3 = null;
 
-      var choice = evt.target.innerHTML;
-      this.controller.answer(choice);
-    });
+        var choice = evt.target.textContent;
+        this.controller.answer(choice);
+      });
   }
 
   template() {
@@ -69,6 +70,8 @@ class MultipleChoiceView extends View {
       // @todo Listen to the loaded event before enabling the playback button.
       this.play.removeAttribute('disabled');
     }
+
+    this.choices.classList.add('clickable');
   }
 
   /**
