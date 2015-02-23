@@ -63,10 +63,18 @@ class MultipleChoiceControllerEn extends Controller {
   answer(choice) {
     if (choice === this.word[this.choicesIndex]) {
       this.score.incrementScore('correct');
+      this.service._dispatchEvent('correct', {
+        question: this.word,
+        answer: choice
+      });
       return;
     }
 
     this.score.incrementScore('incorrect');
+    this.service._dispatchEvent('incorrect', {
+      question: this.word,
+      answer: choice
+    });
   }
 
   pickAWord(level) {
