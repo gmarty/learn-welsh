@@ -9,6 +9,7 @@ class MultipleChoiceControllerEn extends Controller {
   constructor(options) {
     console.log('MultipleChoiceControllerEn#constructor()');
 
+    options = Object.create(options);
     var defaultOptions = {
       id: 'multiple-choice-en',
       showAudioIcon: true,

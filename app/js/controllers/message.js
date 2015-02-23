@@ -7,6 +7,7 @@ class MessageController extends Controller {
   constructor(options) {
     console.log('MessageController#constructor()');
 
+    options = Object.create(options);
     this.view = new MessageView({
       el: document.getElementById('message'),
       service: options.service
