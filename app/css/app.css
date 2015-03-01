@@ -30,10 +30,22 @@ body > section.active {
   opacity: 1;
 }
 
-h1 {
-  font-size: 3.6rem;
+h1, h2 {
   font-weight: normal;
   text-align: center;
+  margin: 3rem 0;
+}
+
+h1 {
+  font-size: 3.6rem;
+}
+
+h2 {
+  font-size: 3.2rem;
+}
+
+p {
+  margin: 1rem 10%;
 }
 
 /* Message */
@@ -47,13 +59,26 @@ h1 {
   color: red;
 }
 
-#message p {
-  margin: 1rem 10%;
+.message {
+  text-align: center;
+  color: darkslategrey;
 }
 
-#message input[type="button"],
+.translation {
+  text-align: center;
+}
+
+.translation {
+  font-size: 90%;
+  font-style: italic;
+  color: darkgrey;
+  margin: -1rem 10% 3rem;
+}
+
+.next,
 .play,
-.choices li button {
+.choices li button,
+.validate {
   width: 100%;
   padding: 1rem;
   background: lightskyblue;

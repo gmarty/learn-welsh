@@ -39,7 +39,7 @@ class MainController extends Controller {
     };
 
     // Observe the score and update the view accordingly.
-    this.service.addEventListener('correct', () => {
+    this.service.addEventListener('correct', evt => {
       if (this.score.percentage >= 60 &&
         this.score.totalAnswers >= this.score.answersBeforeNextLevel) {
         // Next level when at least 20 exercises per level were completed with 60% success.
@@ -49,12 +49,12 @@ class MainController extends Controller {
         return;
       }
 
-      this.controllers.message.view.render('correct');
+      this.controllers.message.view.render('correct', evt.message);
       this.setActiveController('message');
     });
 
-    this.service.addEventListener('incorrect', () => {
-      this.controllers.message.view.render('incorrect');
+    this.service.addEventListener('incorrect', evt => {
+      this.controllers.message.view.render('incorrect', evt.message);
       this.setActiveController('message');
     });
 
