@@ -132,3 +132,19 @@ p {
 .choices li button {
   text-align: left;
 }
+
+/* Write phrase */
+.phrase {
+  width: calc(100% - 2rem - 2px);
+  padding: 1rem;
+  margin: 0;
+  border: 1px solid lightgrey;
+  border-radius: 0;
+  font-size: 2.4rem;
+  font-family: Arial;
+  background: white;
+}
+
+#write-phrase-cy p {
+  margin: 0 10%;
+}

@@ -4,6 +4,7 @@ import { Service } from 'components/fxos-mvc/dist/mvc';
 
 import MultipleChoiceControllerEn from 'js/controllers/multiple_choice_en';
 import MultipleChoiceControllerCy from 'js/controllers/multiple_choice_cy';
+import WritePhraseControllerCy from 'js/controllers/write_phrase_cy';
 import MessageController from 'js/controllers/message';
 
 import Score from 'js/models/score';
@@ -35,6 +36,7 @@ class MainController extends Controller {
     this.controllers = {
       multiple_choice_en: new MultipleChoiceControllerEn(options),
       multiple_choice_cy: new MultipleChoiceControllerCy(options),
+      write_phrase_cy: new WritePhraseControllerCy(options),
       message: new MessageController(options)
     };
 
@@ -73,6 +75,7 @@ class MainController extends Controller {
         this.score.maxLevel = words.length;
         this.controllers.multiple_choice_en.words = words;
         this.controllers.multiple_choice_cy.words = words;
+        this.controllers.write_phrase_cy.words = words;
 
         this.doExercise();
       })
@@ -93,7 +96,7 @@ class MainController extends Controller {
   }
 
   doExercise() {
-    var rnd = Math.floor(Math.random() * 2);
+    var rnd = Math.floor(Math.random() * 3);
 
     switch (rnd) {
       case 0:
@@ -101,6 +104,9 @@ class MainController extends Controller {
         break;
       case 1:
         this.setActiveController('multiple_choice_cy');
+        break;
+      case 2:
+        this.setActiveController('write_phrase_cy');
         break;
       default:
         console.error('Bad choice');
