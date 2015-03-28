@@ -6,8 +6,8 @@ class MultipleChoiceControllerCy extends MultipleChoiceControllerEn {
     console.log('MultipleChoiceControllerCy#constructor()');
 
     options = Object.create(options);
-    options.showAudioIcon = false;
     options.id = 'multiple-choice-cy';
+    options.showAudioIcon = false;
     options.questionIndex = 1;
     options.choicesIndex = 0;
     super(options);

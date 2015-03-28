@@ -23,13 +23,13 @@ class WritePhraseView extends View {
     this.phrase = this.$('.phrase');
     this.mp3 = null;
 
-    this.on('click', '#' + this.controller.id + ' input.play', () => {
+    this.on('click', 'input.play', () => {
       if (this.mp3) {
         this.mp3.play();
       }
     });
 
-    this.on('click', '#' + this.controller.id + ' input.validate', () => {
+    this.on('click', 'input.validate', () => {
       this.play.setAttribute('disabled', true);
       this.mp3 = null;
 

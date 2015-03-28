@@ -27,7 +27,7 @@ class MultipleChoiceView extends View {
     this.mp3 = null;
 
     if (this.controller.showAudioIcon) {
-      this.on('click', '#' + this.controller.id + ' input.play', () => {
+      this.on('click', 'input.play', () => {
         if (this.mp3) {
           this.mp3.play();
         }
@@ -35,7 +35,7 @@ class MultipleChoiceView extends View {
       this.play.removeAttribute('hidden');
     }
 
-    this.on('click', '#' + this.controller.id + ' ul.choices li button',
+    this.on('click', 'ul.choices li button',
         evt => {
         this.choices.classList.remove('clickable');
         this.play.setAttribute('disabled', true);
