@@ -39,11 +39,11 @@ class MessageView extends View {
 
     this.mp3 = null;
 
-    this.on('click', '#message input.next', () => {
+    this.on('click', 'input.next', () => {
       this.service._dispatchEvent('answerdismissed');
     });
 
-    this.on('click', '#message input.play', () => {
+    this.on('click', 'input.play', () => {
       if (this.mp3) {
         this.mp3.play();
       }
