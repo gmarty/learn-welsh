@@ -49,11 +49,13 @@ class MultipleChoiceControllerEn extends Controller {
   exercise(level = 0) {
     this.word = this.pickAWord(level);
 
+    var finalPunctuation = this.getFinalPunctuation(this.word[this.choicesIndex]);
+
     var suggestions = [
       this.word[this.choicesIndex],
       this.pickAWord(level)[this.choicesIndex],
       this.pickAWord(level)[this.choicesIndex]
-    ];
+    ].map(choice => this.replaceFinalPunctuation(choice, finalPunctuation));
 
     shuffle(suggestions);
 
@@ -83,5 +85,26 @@ class MultipleChoiceControllerEn extends Controller {
     var pickedLevel = Math.floor(Math.random() * level);
 
     return shuffle.pick(this.words[pickedLevel]);
+  }
+
+  /**
+   * To avoid users cheating using the punctuation to infer the right answer,
+   * we change the final punctuation in the choices to match that of the word.
+   *
+   * @param {string} word
+   * @returns {string}
+   */
+  getFinalPunctuation(word) {
+    var matches = word.match(/[\.?!]+$/);
+    return matches ? matches[0] : '';
+  }
+
+  /**
+   * @param {string} word
+   * @param {string} finalPunctuation
+   * @returns {string}
+   */
+  replaceFinalPunctuation(word, finalPunctuation) {
+    return word.replace(/[\.?!]+$/, '') + finalPunctuation;
   }
 }

@@ -55,12 +55,8 @@ class MultipleChoiceView extends View {
   }
 
   renderQuiz(word, suggestions) {
-    var question = word[this.controller.questionIndex];
-    var finalPunctuation = this.getFinalPunctuation(question);
-
-    this.question.textContent = question;
+    this.question.textContent = word[this.controller.questionIndex];
     this.choices.innerHTML = suggestions
-      .map(choice => this.replaceFinalPunctuation(choice, finalPunctuation))
       .map(choice => renderChoice(choice))
       .join('');
 
@@ -72,26 +68,5 @@ class MultipleChoiceView extends View {
     }
 
     this.choices.classList.add('clickable');
-  }
-
-  /**
-   * To avoid users cheating using the punctuation to infer the right answer,
-   * we change the final punctuation in the choices to match that of the word.
-   *
-   * @param {string} word
-   * @returns {string}
-   */
-  getFinalPunctuation(word) {
-    var matches = word.match(/[\.?!]+$/);
-    return matches ? matches[0] : '';
-  }
-
-  /**
-   * @param {string} word
-   * @param {string} finalPunctuation
-   * @returns {string}
-   */
-  replaceFinalPunctuation(word, finalPunctuation) {
-    return word.replace(/[\.?!]+$/, '') + finalPunctuation;
   }
 }
