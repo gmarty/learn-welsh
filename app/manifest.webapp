@@ -1,6 +1,6 @@
 {
   "name": "Learn Welsh (South Wales version)",
-  "short_name": "Welsh (South)",
+  "short_name": "Welsh South",
   "version": "0.0.0",
   "description": "App to learn common phrases and words in Welsh.",
   "developer": {
@@ -24,15 +24,15 @@
   "locales": {
     "fr": {
       "name": "Apprendre le Gallois (Galles du Sud)",
-      "short_name": "Gallois (Galles du Sud)",
+      "short_name": "Gallois (Sud)",
       "description": "Une app pour apprendre le Gallois à l'aide de phrases simples."
     },
     "cy": {
       "short_name": "Cymraeg (De Cymru)"
     },
     "ja": {
-      "name": "ウェールズ語の勉強(ｳｪｰﾙｽﾞ南部版)",
-      "short_name": "ウェールズ語~ｳｪｰﾙｽﾞ南部版",
+      "name": "ウェールズ語の勉強(ウェールズ南部版)",
+      "short_name": "南部ｳｪｰﾙｽﾞ語",
       "description": "簡単な言葉を覚えて、ウェールズ語の勉強を手伝うアプリです。"
     }
   }
