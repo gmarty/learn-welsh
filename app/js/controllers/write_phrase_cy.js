@@ -78,13 +78,13 @@ class WritePhraseControllerCy extends Controller {
         .toLowerCase()
         .replace(/\s+/g, '')
         .replace(/[-,\.?!]+/g, '')
-        .replace(/â/g, 'a')
-        .replace(/ê/g, 'e')
-        //.replace(/î/g, 'i')
-        .replace(/ô/g, 'o')
-        //.replace(/û/g, 'u')
-        .replace(/ŵ/g, 'w')
-        .replace(/ŷ/g, 'w')
+        .replace(/[âäáà]/g, 'a')
+        .replace(/[êëéè]/g, 'e')
+        .replace(/[îïíì]/g, 'i')
+        .replace(/[ôöóò]/g, 'o')
+        .replace(/[ûüúù]/g, 'u')
+        .replace(/[ŵẅẃẁ]/g, 'w')
+        .replace(/[ŷÿýỳ]/g, 'w')
         .trim();
     }
 
