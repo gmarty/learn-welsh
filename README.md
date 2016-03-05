@@ -7,7 +7,7 @@
 The source code is located in the `/app` folder. To build it, do:
 
 ```javascript
-$ gulp build
+$ gulp
 ```
 
 Then point your browser to `http://localhost:8000`.

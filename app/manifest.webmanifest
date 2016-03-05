@@ -1,8 +1,13 @@
 {
   "name": "Learn Welsh (South Wales version)",
   "short_name": "Welsh South",
-  "start_url": "/index.html",
+  "lang": "en-GB",
   "scope": "/",
+  "start_url": "/index.html",
+  "orientation": "portrait",
+  "display": "standalone",
+  "theme_color": "lightskyblue",
+  "background_color": "#fff",
   "icons": [
     {
       "src": "/img/icons/16.png",
@@ -37,9 +42,12 @@
       "sizes": "256x256"
     },
     {
+      "src": "/img/icons/336.png",
+      "sizes": "336x336"
+    },
+    {
       "src": "/img/icons/512.png",
       "sizes": "512x512"
     }
-  ],
-  "display": "browser"
+  ]
 }
