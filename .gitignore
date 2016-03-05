@@ -1,4 +1,5 @@
-node_modules/
-raw-assets/
-app/assets/
-dist/
+/.idea/
+/node_modules/
+/raw-assets/
+/app/assets/
+/dist/
