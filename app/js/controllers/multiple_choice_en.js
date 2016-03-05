@@ -1,8 +1,8 @@
+/* global shuffle */
+
 import { Controller } from 'components/fxos-mvc/dist/mvc';
 
 import MultipleChoiceView from 'js/views/multiple_choice';
-
-import /*global shuffle*/ 'components/shuffle-array/index';
 
 export default
 class MultipleChoiceControllerEn extends Controller {

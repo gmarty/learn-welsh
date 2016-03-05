@@ -21,9 +21,9 @@
     "url": "https://github.com/gmarty/learn-welsh/issues"
   },
   "devDependencies": {
-    "fxos-build": "git://github.com/fxos/build#master",
-    "nodexml": "~1.0.2",
-    "lodash": "~2.4.1",
-    "gulp": "~3.8.10"
+    "fxos-build": "git://github.com/fxos-eng/build.git#master",
+    "gulp": "^3.9.1",
+    "lodash": "^4.6.1",
+    "nodexml": "^1.0.2"
   }
 }

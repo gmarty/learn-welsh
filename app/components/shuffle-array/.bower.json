@@ -1,6 +1,7 @@
 {
   "name": "shuffle-array",
   "main": "dist/shuffle-array.js",
+  "version": "0.1.2",
   "homepage": "https://github.com/pazguille/shuffle-array",
   "description": "Randomize the order of the elements in a given array.",
   "keywords": [
@@ -19,14 +20,13 @@
     "test",
     "tests"
   ],
-  "_release": "f60fcbc10a",
+  "_release": "0.1.2",
   "_resolution": {
-    "type": "branch",
-    "branch": "master",
-    "commit": "f60fcbc10a9d71c9a8534607bddd28dacf65aa13"
+    "type": "version",
+    "tag": "0.1.2",
+    "commit": "bd67edb51c1b72b5f14a194d2d56c90e4461c6e3"
   },
   "_source": "git://github.com/pazguille/shuffle-array.git",
   "_target": "*",
-  "_originalSource": "shuffle-array",
-  "_direct": true
+  "_originalSource": "shuffle-array"
 }

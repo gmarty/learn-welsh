@@ -22,7 +22,7 @@
     "tests"
   ],
   "dependencies": {
-    "fxos-mvc": "git@github.com:fxos/mvc.git",
+    "fxos-mvc": "git@github.com:fxos-eng/mvc.git#master",
     "shuffle-array": "*"
   }
 }

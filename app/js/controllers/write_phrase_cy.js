@@ -1,8 +1,8 @@
+/* global shuffle */
+
 import { Controller } from 'components/fxos-mvc/dist/mvc';
 
 import WritePhraseView from 'js/views/write_phrase';
-
-import /*global shuffle*/ 'components/shuffle-array/index';
 
 export default
 class WritePhraseControllerCy extends Controller {

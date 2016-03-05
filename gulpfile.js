@@ -15,7 +15,7 @@ var to5 = require(buildModules + 'gulp-6to5');
 var jshint = require(buildModules + 'gulp-jshint');
 var zip = require(buildModules + 'gulp-zip');
 var del = require(buildModules + 'del');
-var runSequence = require(buildModules + 'run-sequence');
+var runSequence = require(buildModules + 'run-sequence').use(gulp);
 var webserver = require(buildModules + 'gulp-webserver');
 
 const APP_ROOT = './app/';
