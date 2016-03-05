@@ -6,8 +6,7 @@ var template = `
   <p><input type="button" value="OK" class="validate"/></p>
   `;
 
-export default
-class WritePhraseView extends View {
+export default class WritePhraseView extends View {
   constructor(options) {
     console.log('WritePhraseView#constructor()');
 
@@ -48,7 +47,7 @@ class WritePhraseView extends View {
 
   renderQuiz(word) {
     this.mp3 = new Audio();
-    this.mp3.src = `assets/mp3/${word[2]}`;
+    this.mp3.src = `/assets/mp3/${word[2]}`;
     // @todo Listen to the loaded event before enabling the playback button.
     this.play.removeAttribute('disabled');
     this.phrase.value = '';

@@ -9,8 +9,7 @@ var renderChoice = word => `
   <li><button>${word}</button></li>
   `;
 
-export default
-class MultipleChoiceView extends View {
+export default class MultipleChoiceView extends View {
   constructor(options) {
     console.log('MultipleChoiceView#constructor()');
 
@@ -19,6 +18,7 @@ class MultipleChoiceView extends View {
 
   init(controller) {
     super(controller);
+
     this.render();
 
     this.play = this.$('.play');
@@ -35,15 +35,14 @@ class MultipleChoiceView extends View {
       this.play.removeAttribute('hidden');
     }
 
-    this.on('click', 'ul.choices li button',
-        evt => {
-        this.choices.classList.remove('clickable');
-        this.play.setAttribute('disabled', true);
-        this.mp3 = null;
+    this.on('click', 'ul.choices li button', evt => {
+      this.choices.classList.remove('clickable');
+      this.play.setAttribute('disabled', true);
+      this.mp3 = null;
 
-        var choice = evt.target.textContent;
-        this.controller.answer(choice);
-      });
+      var choice = evt.target.textContent;
+      this.controller.answer(choice);
+    });
   }
 
   template() {
@@ -62,7 +61,7 @@ class MultipleChoiceView extends View {
 
     if (this.controller.showAudioIcon) {
       this.mp3 = new Audio();
-      this.mp3.src = `assets/mp3/${word[2]}`;
+      this.mp3.src = `/assets/mp3/${word[2]}`;
       // @todo Listen to the loaded event before enabling the playback button.
       this.play.removeAttribute('disabled');
     }
