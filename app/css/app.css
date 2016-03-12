@@ -22,13 +22,14 @@ body > section {
   height: 100%;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 150ms;
+  transition: opacity 150ms 75ms;
   -moz-user-select: none; /* To avoid cheaters copying/pasting text! */
 }
 
 body > section.active {
   pointer-events: auto;
   opacity: 1;
+  transition: opacity 150ms;
 }
 
 h1, h2, h3 {
