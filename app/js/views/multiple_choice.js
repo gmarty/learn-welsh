@@ -1,7 +1,7 @@
-import { View } from 'components/fxos-mvc/dist/mvc';
+import View from './base_view';
 
 var template = `
-  <h1><input type="button" value="♫" class="play" disabled hidden/><span class="question"></span></h1>
+  <h2><input type="button" value="♫" class="play" disabled hidden/><span class="question"></span></h2>
   <ul class="choices"></ul>
   `;
 
