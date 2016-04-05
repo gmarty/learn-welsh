@@ -14,13 +14,15 @@ function displayError(error) {
   console.error(message);
 }
 
-export default
-class MainController extends Controller {
+export default class MainController extends Controller {
   constructor() {
     console.log('MainController#constructor()');
 
-    this.service = new Service();
-    this.score = new Score();
+    const options = {
+      service: new Service(),
+      score: new Score()
+    };
+    super(options);
 
     this.init();
   }

@@ -1,7 +1,6 @@
 import MultipleChoiceControllerEn from 'js/controllers/multiple_choice_en';
 
-export default
-class MultipleChoiceControllerCy extends MultipleChoiceControllerEn {
+export default class MultipleChoiceControllerCy extends MultipleChoiceControllerEn {
   constructor(options) {
     console.log('MultipleChoiceControllerCy#constructor()');
 

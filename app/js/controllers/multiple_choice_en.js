@@ -4,8 +4,7 @@ import { Controller } from 'components/fxos-mvc/dist/mvc';
 
 import MultipleChoiceView from 'js/views/multiple_choice';
 
-export default
-class MultipleChoiceControllerEn extends Controller {
+export default class MultipleChoiceControllerEn extends Controller {
   constructor(options) {
     console.log('MultipleChoiceControllerEn#constructor()');
 
@@ -25,7 +24,7 @@ class MultipleChoiceControllerEn extends Controller {
       }
     }
 
-    this.view = new MultipleChoiceView({
+    options.view = new MultipleChoiceView({
       el: document.getElementById(options.id)
     });
     super(options);

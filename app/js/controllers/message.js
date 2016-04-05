@@ -2,13 +2,12 @@ import { Controller } from 'components/fxos-mvc/dist/mvc';
 
 import MessageView from 'js/views/message';
 
-export default
-class MessageController extends Controller {
+export default class MessageController extends Controller {
   constructor(options) {
     console.log('MessageController#constructor()');
 
     options = Object.create(options);
-    this.view = new MessageView({
+    options.view = new MessageView({
       el: document.getElementById('message'),
       service: options.service
     });

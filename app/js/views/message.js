@@ -30,7 +30,7 @@ export default class MessageView extends View {
   init(controller) {
     console.log('MessageView#init()');
 
-    super(controller);
+    this.controller = controller;
 
     this.play = null;
     this.mp3 = null;

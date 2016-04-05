@@ -17,7 +17,7 @@ export default class MultipleChoiceView extends View {
   }
 
   init(controller) {
-    super(controller);
+    this.controller = controller;
 
     this.render();
 

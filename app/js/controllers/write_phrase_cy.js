@@ -4,8 +4,7 @@ import { Controller } from 'components/fxos-mvc/dist/mvc';
 
 import WritePhraseView from 'js/views/write_phrase';
 
-export default
-class WritePhraseControllerCy extends Controller {
+export default class WritePhraseControllerCy extends Controller {
   constructor(options) {
     console.log('WritePhraseControllerCy#constructor()');
 
@@ -23,7 +22,7 @@ class WritePhraseControllerCy extends Controller {
       }
     }
 
-    this.view = new WritePhraseView({
+    options.view = new WritePhraseView({
       el: document.getElementById(options.id)
     });
     super(options);

@@ -14,7 +14,7 @@ export default class WritePhraseView extends View {
   }
 
   init(controller) {
-    super(controller);
+    this.controller = controller;
 
     this.render();
 
